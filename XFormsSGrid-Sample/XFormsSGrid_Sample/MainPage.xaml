@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="XFormsSGrid_Sample.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:control1="clr-namespace:XamarinForms_GridView.Control;assembly=XamarinForms-GridView"
+             xmlns:local="clr-namespace:XFormsSGrid_Sample"
+             BackgroundColor="White">
+
+    <control1:GridView x:Name="GridView"
+                       ClickCommand="{Binding ClickToSendCommand}"
+                       CommandParameter="{Binding}"
+                       IsClippedToBounds="False"
+                       ItemsSource="{Binding UnderlyingCollection}">
+        <control1:GridView.ItemTemplate>
+            <DataTemplate>
+                <Frame BackgroundColor="Transparent"
+                       HasShadow="True"
+                       HorizontalOptions="FillAndExpand"
+                       OutlineColor="Purple"
+                       VerticalOptions="CenterAndExpand">
+                    <AbsoluteLayout BackgroundColor="Transparent">
+                        <Label AbsoluteLayout.LayoutBounds="0.5,0.5,1.0,1.0"
+                               AbsoluteLayout.LayoutFlags="All"
+                               FontSize="20"
+                               HorizontalTextAlignment="Center"
+                               Text="{Binding Name}"
+                               TextColor="Red"
+                               VerticalTextAlignment="Center" />
+
+
+                        <ActivityIndicator AbsoluteLayout.LayoutBounds="0.5,0.5,50,50"
+                                           AbsoluteLayout.LayoutFlags="PositionProportional"
+                                           IsRunning="{Binding IsBusy,
+                                                               Mode=TwoWay}"
+                                           IsVisible="{Binding IsBusy,
+                                                               Mode=TwoWay}" />
+                    </AbsoluteLayout>
+                </Frame>
+            </DataTemplate>
+        </control1:GridView.ItemTemplate>
+    </control1:GridView>
+
+</ContentPage>
