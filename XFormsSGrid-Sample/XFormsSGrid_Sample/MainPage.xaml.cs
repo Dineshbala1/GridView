@@ -43,7 +43,7 @@ namespace XFormsSGrid_Sample
 
         void generateData()
         {
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 250; i++)
             {
                 var person = new Person() {Name = "Tile" + i};
                 UnderlyingCollection.Add(person);

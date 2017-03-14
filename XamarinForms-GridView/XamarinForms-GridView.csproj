@@ -42,6 +42,7 @@
     <Compile Include="Control\GridPanel.cs" />
     <Compile Include="Data\DataView.cs" />
     <Compile Include="Data\IDataView.cs" />
+    <Compile Include="Data\RowInfoModel.cs" />
     <Compile Include="Data\ScrollRows.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

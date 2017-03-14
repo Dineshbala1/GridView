@@ -14,10 +14,8 @@ namespace XamarinForms_GridView.Control
 {
     public class GridView : ScrollView
     {
-
-        private GridPanel gridPanel;
         private static float defaultColWidth = 120;
-        private ScrollRows scrollRows;
+        internal ScrollRows scrollRows;
         internal GridSize GridSize;
 
         #region BindableProperties
@@ -55,7 +53,7 @@ namespace XamarinForms_GridView.Control
             if (newvalue != null)
             {
                 grid.DataView.ItemsSource = newvalue;
-                grid.gridPanel.GenerateRows();
+                //grid.gridPanel.GenerateRows();
             }
         }
 
@@ -69,7 +67,7 @@ namespace XamarinForms_GridView.Control
         //TODO: Need to make TileHeight and TileWidth as Bindable Property.
         public static readonly BindableProperty TileWidthProperty = BindableProperty.Create("TileWidth",
             typeof(float), typeof(GridView), defaultColWidth, BindingMode.Default, null,
-            (sender, oldvalue, newvalue) => { onTileWidthPropertyChanged(sender, oldvalue, newvalue); }, null, null, null);
+            onTileWidthPropertyChanged);
 
         private static void onTileWidthPropertyChanged(BindableObject sender, object oldvalue, object newvalue)
         {
@@ -126,24 +124,16 @@ namespace XamarinForms_GridView.Control
             TileHeight = 120;
             TileWidth = 120;
             Padding = new Thickness(5);
-            gridPanel = new GridPanel(this);
-            gridPanel.CreateTemplate = GenerateViewFromTemplate;
-            Content = gridPanel;
-            Scrolled += StaggeredGridView_Scrolled;
-            this.GridSize =  new GridSize(TileHeight, TileWidth);
-        }
-
-        //TODO : UI Virtualization needs to be added.
-        //TODO : Data Virtualization needs to be added.
-        private void StaggeredGridView_Scrolled(object sender, ScrolledEventArgs e)
-        {
-            if (Orientation == ScrollOrientation.Vertical)
-            {
-                Debug.WriteLine(e.ScrollY);
-            }
+            Content = new GridPanel(this);
+            GridSize =  new GridSize(TileHeight, TileWidth);
         }
 
         #endregion
+
+        protected override void OnPropertyChanged(string propertyName = null)
+        {
+            base.OnPropertyChanged(propertyName);
+        }
 
         //TODO: Option to enable StaggeredGrid needs to be added.
         private async Task<View> GenerateViewFromTemplate(object item1)
@@ -164,22 +154,31 @@ namespace XamarinForms_GridView.Control
             });
         }
 
-
-        protected override void OnBindingContextChanged()
-        {
-            base.OnBindingContextChanged();
-        }
-
         protected override bool ShouldInvalidateOnChildAdded(View child)
         {
             return false;
         }
 
+        protected override bool ShouldInvalidateOnChildRemoved(View child)
+        {
+            return false;
+        }
+
+        protected override void OnSizeAllocated(double width, double height)
+        {
+            base.OnSizeAllocated(width, height);
+        }
+
+        protected override SizeRequest OnMeasure(double widthConstraint, double heightConstraint)
+        {
+            return base.OnMeasure(widthConstraint, heightConstraint);
+        }
+
         protected override void LayoutChildren(double x, double y, double width, double height)
         {
-            //TODO: Need to do UI virtualization
             var sizeRequest = Content.Measure(width, height);
-            scrollRows = new ScrollRows(sizeRequest.Request.Height, TileHeight);
+            if (scrollRows == null)
+                scrollRows = new ScrollRows(height,sizeRequest.Request.Height, TileHeight);
             Content.Layout(new Rectangle(x, y, width, sizeRequest.Request.Height));
         }
     }

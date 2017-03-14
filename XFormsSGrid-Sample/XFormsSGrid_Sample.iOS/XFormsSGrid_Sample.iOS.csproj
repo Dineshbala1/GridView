@@ -151,9 +151,9 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\XamarinForms-StaggeredGrid\XamarinForms-StaggeredGrid.csproj">
+    <ProjectReference Include="..\..\XamarinForms-GridView\XamarinForms-GridView.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>XamarinForms-StaggeredGrid</Name>
+      <Name>XamarinForms-GridView</Name>
     </ProjectReference>
     <ProjectReference Include="..\XFormsSGrid_Sample\XFormsSGrid_Sample.csproj">
       <Project>{04cd82ad-afc9-4223-bb91-fef351d4716d}</Project>

@@ -17,7 +17,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <AndroidUseLatestPlatformSdk>true</AndroidUseLatestPlatformSdk>
-    <TargetFrameworkVersion>v7.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v6.0</TargetFrameworkVersion>
     <AndroidSupportedAbis>armeabi,armeabi-v7a,x86</AndroidSupportedAbis>
     <AndroidStoreUncompressedFileExtensions />
     <MandroidI18n />
@@ -133,13 +133,9 @@
     <AndroidResource Include="Resources\values\styles.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\XamarinForms-StaggeredGrid.Droid\XamarinForms-StaggeredGrid.Droid.csproj">
-      <Project>{f5ea8251-7b0f-4859-a52e-37041cfd4cde}</Project>
-      <Name>XamarinForms-StaggeredGrid.Droid</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\XamarinForms-StaggeredGrid\XamarinForms-StaggeredGrid.csproj">
+    <ProjectReference Include="..\..\XamarinForms-GridView\XamarinForms-GridView.csproj">
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
-      <Name>XamarinForms-StaggeredGrid</Name>
+      <Name>XamarinForms-GridView</Name>
     </ProjectReference>
     <ProjectReference Include="..\XFormsSGrid_Sample\XFormsSGrid_Sample.csproj">
       <Project>{04cd82ad-afc9-4223-bb91-fef351d4716d}</Project>

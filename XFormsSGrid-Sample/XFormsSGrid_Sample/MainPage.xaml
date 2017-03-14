@@ -5,8 +5,10 @@
              xmlns:control1="clr-namespace:XamarinForms_GridView.Control;assembly=XamarinForms-GridView"
              xmlns:local="clr-namespace:XFormsSGrid_Sample"
              BackgroundColor="White">
-
+  
     <control1:GridView x:Name="GridView"
+                       Orientation="Vertical"
+                       HorizontalOptions="FillAndExpand"
                        ClickCommand="{Binding ClickToSendCommand}"
                        CommandParameter="{Binding}"
                        IsClippedToBounds="False"
@@ -39,5 +41,5 @@
             </DataTemplate>
         </control1:GridView.ItemTemplate>
     </control1:GridView>
-
+  
 </ContentPage>

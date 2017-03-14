@@ -20,6 +20,7 @@ namespace XamarinForms_GridView.Control
         {
             foreach (var item in Children)
             {
+                //item.BindingContext = BindingContext;
                 item.Layout(new Rectangle(x, y, width, height));
             }
         }
